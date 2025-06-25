@@ -1,6 +1,7 @@
 package net.ironmouse.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.ironmouse.tutorialmod.block.Modblocks;
 import net.ironmouse.tutorialmod.item.Moditems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -51,6 +52,7 @@ public class TutorialMod
         MinecraftForge.EVENT_BUS.register(this);
 
         Moditems.register(modEventBus);
+        Modblocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -72,6 +74,11 @@ public class TutorialMod
             event.accept(Moditems.IRONMOUSERITE);
             event.accept(Moditems.RAW_IRONMOUSERITE);
             event.accept(Moditems.HEART);
+
+        }
+        if(event.getTabKey()==CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(Modblocks.IRONMOUSE_BLOCK);
+            event.accept(Modblocks.AlEX_BLOCK);
         }
 
     }
